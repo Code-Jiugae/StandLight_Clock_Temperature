@@ -30,14 +30,18 @@ void Listener::checkEvent()
         controller->updateEvent("clockUpdate");
     }
 
-    // static unsigned int prevTempHumidTime = 0;
-    // if(millis() - prevTempHumidTime > 2000)
+    static unsigned int prevTempHumidTime = 0;
+    // if(millis() - prevTempHumidTime > 1000)
     // {
     //     prevTempHumidTime = millis();
         DHT_Data dhtData = dht11->readData();
         if(!dhtData.error)
         {
             controller->updateTempHumid(dhtData);
+        }
+        else
+        {
+            //something...
         }
     // }
 }

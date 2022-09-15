@@ -30,28 +30,51 @@ void View::setState(int state)
 
 void View::lightView()
 {
-    switch (lightState)
+    char buff[30];
+    sprintf(buff, "sw:%d", lightState);
+    lcd->WriteStringXY(0, 0, buff);
+    if(lcd->backLightWarning)
     {
-    case LIGHT_OFF:
-        lightOff();
-        break;
+        light1->Off();
+        light2->Off();
+        light3->Off();
+        light4->Off();
+        light5->Off();
+        if(lcd->backLightState)
+        {
+            lcd->backLightOn();
+        }
+        else
+        {
+            lcd->backLightOff();
+        }
 
-    case LIGHT_1:
-        lightOn_1();
-        break;
-    case LIGHT_2:
-        lightOn_2();
-        break;
-    case LIGHT_3:
-        lightOn_3();
-        break;
-    case LIGHT_4:
-        lightOn_4();
-        break;
-    case LIGHT_5:
-        lightOn_5();
-        break;
     }
+    else
+    {
+        switch (lightState)
+        {
+        case LIGHT_OFF:
+            lightOff();
+            break;
+        case LIGHT_1:
+            lightOn_1();
+            break;
+        case LIGHT_2:
+            lightOn_2();
+            break;
+        case LIGHT_3:
+            lightOn_3();
+            break;
+        case LIGHT_4:
+            lightOn_4();
+            break;
+        case LIGHT_5:
+            lightOn_5();
+            break;
+        }
+    }
+    
 }
 
 void View::lightOn_1()
@@ -66,6 +89,7 @@ void View::lightOn_1()
 
 void View::lightOn_2()
 {
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->Off();
@@ -75,6 +99,7 @@ void View::lightOn_2()
 
 void View::lightOn_3()
 {
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->On();
@@ -84,6 +109,7 @@ void View::lightOn_3()
 
 void View::lightOn_4()
 {
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->On();
@@ -93,6 +119,7 @@ void View::lightOn_4()
 
 void View::lightOn_5()
 {
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->On();

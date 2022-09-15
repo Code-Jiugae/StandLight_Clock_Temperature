@@ -36,6 +36,8 @@ private:
     void writeData(uint8_t charData);
 
 public:
+    int backLightWarning = 0;
+    bool backLightState = false;
     LCD();
     LCD(I2C *i2c);
     virtual ~LCD();
