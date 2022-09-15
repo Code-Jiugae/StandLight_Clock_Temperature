@@ -4,10 +4,12 @@ project(StandLight)
 
 add_executable(${PROJECT_NAME}
     ./src/main.cpp
+    ./src/app/Service/TempHumidService.cpp
     ./src/app/Service/ClockService.cpp
     ./src/app/Service/Service.cpp
     ./src/app/Listener/Listener.cpp
     ./src/app/Controller/Controller.cpp
+    ./src/app/View/TempHumidView.cpp
     ./src/app/View/View.cpp
     ./src/app/View/ClockView.cpp
     ./src/hw/Button/Button.cpp
@@ -15,6 +17,7 @@ add_executable(${PROJECT_NAME}
     ./src/hw/ClockCheck/ClockCheck.cpp
     ./src/hw/LCD/LCD.cpp
     ./src/hw/I2C/I2C.cpp
+    ./src/hw/DHT11/DHT11.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -27,6 +30,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ./src/hw/ClockCheck
     ./src/hw/LCD
     ./src/hw/I2C
+    ./src/hw/DHT11
 )
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
